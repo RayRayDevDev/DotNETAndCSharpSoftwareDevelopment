@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿class FirstProgram
+{
+    public static void Main()
+    {
+        System.Console.WriteLine("Hello, Microsoft .NET Framework!");
+    }
+}
