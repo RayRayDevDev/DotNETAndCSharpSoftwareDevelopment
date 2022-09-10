@@ -1,4 +1,6 @@
-﻿class FirstProgram
+﻿//Created by Cole Stanley (R
+
+class FirstProgram
 {
     public static void Main()
     {
