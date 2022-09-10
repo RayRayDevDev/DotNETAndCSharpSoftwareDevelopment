@@ -1,4 +1,8 @@
 ﻿using static System.Console; //Because typing "Console" every time isn't particularly fun.
+
+//Created by Cole Stanley (RäDev) for CEN 4370C on 09/09/2022.
+//This program takes in five inputs from the user in the form of an int or double, and then allows them to select whether they want to add, average, do both adding and averaging, or exit the program and do nothing.
+//Created with .NET (C#) 6.0
 class SumAvg
 {
     private static int userChoice; //Field for user menu selection int.
@@ -39,23 +43,23 @@ class SumAvg
                     WriteLine($"The sum of the inputted numbers is: {sum}.\nThe average of the inputted numbers is: {avg}.");
                     break;
                 case 4 when userChoice == 4:
-                     willContinue = false;
-                        break;
+                    willContinue = false;
+                    break;
                 default:
                     WriteLine("Oops! Looks like you didn't make a valid choice! Please try again!");
                     break;
             }
 
         } while (willContinue);
-      
+
 
     }
 
-    private static double Sum(string[] numbers)
+    private static double Sum(string[] numbers) //Pass in the array of user inputted numbers.
     {
         int i = 0;
         double sum = 0;
-        foreach (var j in numbers)
+        foreach (var j in numbers) //Foreach loop to recursively add each number to itself.
         {
             sum += Convert.ToDouble(numbers[i]);
         }
@@ -63,7 +67,7 @@ class SumAvg
 
     }
 
-    private static Double Avg(string[] numbers)
+    private static double Avg(string[] numbers)
     {
         int i = 0;
         double sum = 0;
@@ -72,18 +76,18 @@ class SumAvg
         foreach (var j in numbers)
         {
             sum += Convert.ToDouble(numbers[i]);
-            i++;
+            i++; //Increase i by the number of entries in the array. While not necessary for this particular assignment given the fixed index, I still wanted it to be implemented such that a variable amount of numbers may eventually be used instead.
         }
 
-        if (i != 0)
-        { 
+        if (i != 0) //prevent divide by zero exceptions.
+        {
             avg = sum / i;
         }
 
         else
         {
-            throw new DivideByZeroException("Something went wrong. Try again!");
+            throw new DivideByZeroException("Something went wrong. Try again!"); //Throws an exception if i == 0 for some reason as my compiler stated at least one path could lead to this outcome.
         }
-        return Math.Round(avg, 2);
+        return Math.Round(avg, 2); //Round the final number to two decimal points and return it to the calling function.
     }
 }
