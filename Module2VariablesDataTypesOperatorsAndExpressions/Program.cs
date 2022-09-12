@@ -6,62 +6,74 @@
 class SumAvg
 {
     private static int userChoice; //Field for user menu selection int.
-    private static bool willContinue = true; //Field for do...while loop condition. Once the value is changed to "false" by the user, it will exit the loop.
+    private static bool willContinue = true; //Field for while loop condition. Once the value is changed to "false" by the user, it will exit the loop.
 
     static void Main(string[] args)
     {
         Title = "Sum and Average Calculator";
         WriteLine(Title);
-
-        do //Loop so one doesn't have to keep relaunching the program.
+        while (willContinue) //Loop so one doesn't have to keep relaunching the program.
         {
+            WriteLine("\nYou may exit the program at anytime by typing the letter 'e'.");
             string[] numbers = new string[5]; //Array to hold the user's numbers.
             for (int i = 0; i < numbers.Length; i++) //Loop to collect user's entries.
             {
-                Write("Please enter a number: ");
+                Write("\nPlease enter a number: ");
                 string prompt = ReadLine().Trim(); //Reading user's entries.
+                if (prompt.ToLower() == "e")
+                {
+                    System.Environment.Exit(0);
+                }
                 numbers[i] = prompt; //Storing user's entries in the array.
             }
 
-            WriteLine(
-                "\nPlease select the corresponding number for the operation you wish to perform:\n1. Sum the inputted numbers\n2.Average the inputted numbers\n3. Both Sum and Average the inputted numbers.\n4. Exit.");
-            userChoice = Convert.ToInt32(Console.ReadLine()); //Converting string representation of the number entered into an int representation.
-
-            switch (userChoice) //Switch statement to determine if wants to sum, average, sum AND average, or exit the loop.
+            bool continueWithCurrentArray = true;
+            while (continueWithCurrentArray) //UPDATED: Loop to allow multiple selections with the same array of numbers.
             {
-                case 1 when userChoice == 1:
-                    double sum = Sum(numbers);
-                    WriteLine($"The sum of the inputted numbers is: {sum}");
-                    break;
-                case 2 when userChoice == 2:
-                    double avg = Avg(numbers);
-                    WriteLine($"The average of the inputted numbers is: {avg}");
-                    break;
-                case 3 when userChoice == 3:
-                    sum = Sum(numbers);
-                    avg = Avg(numbers);
-                    WriteLine($"The sum of the inputted numbers is: {sum}.\nThe average of the inputted numbers is: {avg}.");
-                    break;
-                case 4 when userChoice == 4:
-                    willContinue = false;
-                    break;
-                default:
-                    WriteLine("Oops! Looks like you didn't make a valid choice! Please try again!");
-                    break;
+                WriteLine("\nPlease utilize the corresponding number for the operation you wish to perform:\n1. Sum the entered numbers\n2. Average the entered numbers\n3. Both Sum and Average the entered numbers.\n4. Enter different numbers.\n5. Exit the program.");
+                Write("Please make your selection: ");
+                userChoice = Convert.ToInt32(Console.ReadLine()); //Converting string representation of the number entered into its int representation.
+
+                switch
+                    (userChoice) //Switch statement to determine if wants to sum, average, sum AND average, or exit the loop.
+                {
+                    case 1 when userChoice == 1:
+                        double sum = Sum(numbers);
+                        WriteLine($"\nThe sum of the entered numbers is: {sum}");
+                        break;
+                    case 2 when userChoice == 2:
+                        double avg = Avg(numbers);
+                        WriteLine($"\nThe average of the entered numbers is: {avg}");
+                        break;
+                    case 3 when userChoice == 3:
+                        sum = Sum(numbers);
+                        avg = Avg(numbers);
+                        WriteLine(
+                            $"\nThe sum of the entered numbers is: {sum}.\nThe average of the entered numbers is: {avg}.");
+                        break;
+                    case 4 when userChoice == 4: //UPDATED: Exit the current loop and restart the array insertion process.
+                        continueWithCurrentArray = false;
+                        Clear(); //UPDATED: Clear the console since we're done with the old array and it just clutters up the console.
+                        break;
+                    case 5 when userChoice == 5: //UPDATED: Exit the loop containing 
+                        continueWithCurrentArray = false;
+                        willContinue = false;
+                        break;
+                    default:
+                        WriteLine("\nOops! Looks like you didn't make a valid choice! Please try again!");
+                        continue;
+                }
             }
-
-        } while (willContinue);
-
-
+        }
     }
 
     private static double Sum(string[] numbers) //Pass in the array of user inputted numbers.
     {
-        int i = 0;
         double sum = 0;
-        foreach (var j in numbers) //Foreach loop to recursively add each number to itself.
+        for (int i = 0; i < numbers.Length; i++)
         {
             sum += Convert.ToDouble(numbers[i]);
+
         }
         return sum;
 
@@ -86,7 +98,7 @@ class SumAvg
 
         else
         {
-            throw new DivideByZeroException("Something went wrong. Try again!"); //Throws an exception if i == 0 for some reason as my compiler stated at least one path could lead to this outcome.
+            throw new DivideByZeroException("\nYikes! Something went wrong. Try again!"); //Throws an exception if i == 0 for some reason as my compiler stated at least one path could lead to this outcome.
         }
         return Math.Round(avg, 2); //Round the final number to two decimal points and return it to the calling function.
     }
