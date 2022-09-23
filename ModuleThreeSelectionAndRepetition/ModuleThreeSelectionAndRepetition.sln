@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleThreeSelectionAndRepetition", "ModuleThreeSelectionAndRepetition.csproj", "{197E67C3-EFE0-43AC-8653-B81BF4B9BD4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{197E67C3-EFE0-43AC-8653-B81BF4B9BD4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197E67C3-EFE0-43AC-8653-B81BF4B9BD4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197E67C3-EFE0-43AC-8653-B81BF4B9BD4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197E67C3-EFE0-43AC-8653-B81BF4B9BD4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9134A131-E9F8-4B78-BB94-1C4B82B0BC2F}
+	EndGlobalSection
+EndGlobal
