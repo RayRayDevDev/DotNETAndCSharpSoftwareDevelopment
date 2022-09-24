@@ -1,5 +1,9 @@
 ﻿using static System.Console;
 
+//Created by Cole Stanley (RäDev) for CEN 4370C on 09/22/2022. 
+//This program takes in ten inputs from the user, in the form of a double (and, implicitly, an int) each prompt. The program then stores each input into an array that gets sorted in ascending order after all inputs are stored, outputting the smallest and largest value, respectively, to the console. The program then exits with status code 0. 
+//Created with .NET (C#) 6.0
+
 class MainProgram
 {
     public static void Main(string[] args)
@@ -37,7 +41,7 @@ class MainProgram
             catch (FormatException e)
             {
                 WriteLine("Uh oh! You didn't type a number. Please try again!");
-                if (i <= 0)
+                if (i >= 0) //Prevent subtracting i into negative territory. 
                 {
                     i--;
                     continue;
@@ -45,7 +49,10 @@ class MainProgram
             }
         }
         Array.Sort(numbers);
-        WriteLine(numbers[0]);
-        WriteLine(numbers[9]);
+        Clear();
+        WriteLine($"The lowest value in this set is: {numbers[0]}");
+        WriteLine($"The highest value in this set is: {numbers[9]}");
+        Write("\n\nPress any key to exit..."); 
+        ReadKey(); 
     }
 }
