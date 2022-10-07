@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using static System.Console;
+﻿using static System.Console;
 
 class Fibonacci
 {
