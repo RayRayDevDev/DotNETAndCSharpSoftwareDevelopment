@@ -2,11 +2,23 @@
 
 class Fibonacci
 {
+    private static int userSelection;
+
     public static void Main(string[] args)
     {
-        
-        Iterative();
-        Recursive();
+        userSelection = Convert.ToInt32(ReadLine());
+        if (userSelection == 1)
+        {
+            Iterative();
+        }
+        else if (userSelection == 2)
+        {
+            Recursive();
+        }
+        else
+        {
+            WriteLine("You did not make a valid selection. Please relaunch the program and try again.");
+        }
     }
 
     private static void Recursive()
@@ -16,7 +28,7 @@ class Fibonacci
         FibonacciRecursive(0, 1, 1, userInput);
     }
 
-    private static void FibonacciRecursive(int n1, int n2, int n3, int userInput)
+    private static void FibonacciRecursive(Int64 n1, Int64 n2, Int64 n3, int userInput)
     {
         WriteLine($"{n1}");
         if (n3 < userInput)
