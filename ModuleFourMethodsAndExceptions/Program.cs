@@ -1,5 +1,7 @@
 ﻿using static System.Console;
 
+//Created by Cole Stanley (RäDev) for CEN 4370C on 10/07/2022.
+
 class AreaCalculator
 {
     public static void Main(string[] args)
@@ -79,7 +81,7 @@ class AreaCalculator
                         Write("Now, please enter the rectangle's width: ");
                         w = Convert.ToDouble(ReadLine());
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         Clear();
                         WriteLine("Yikes! You should've entered a number! Please try again!");
