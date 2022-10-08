@@ -1,6 +1,6 @@
 ﻿using static System.Console;
 
-//Created by Cole Stanley (RäDev) for CEN 4370C on 09/18/2022.
+//Created by Cole Stanley (RäDev) for CEN 4370C on 10/07/2022.
 
 class Fibonacci
 {
