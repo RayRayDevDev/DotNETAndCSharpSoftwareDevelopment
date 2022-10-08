@@ -1,7 +1,7 @@
 ﻿using static System.Console;
 
 //Created by Cole Stanley (RäDev) for CEN 4370C on 10/07/2022.
-
+//The program takes in a user's input, switches on that input, and then calculates and writes an answer to the console based upon that user's selection and the relevant data entered by the aforementioned user. 
 class AreaCalculator
 {
     public static void Main(string[] args)
@@ -30,7 +30,7 @@ class AreaCalculator
         WriteLine(Calculations(userSelection));
 
     }
-    private static string Calculations(int userSelection) 
+    private static string Calculations(int userSelection) //One method for all possible calculations. Ensures cleaner code and easier debugging in my opinion than splitting each calculation into its own separate method and then calling them individually. 
     {
         string value = null;
         double r = 0;
@@ -98,7 +98,9 @@ class AreaCalculator
         }
         catch (FormatException)
         {
-            
+            WriteLine("I'm unsure what you've done to cause this exception, but congratulations on causing it nonetheless!\n\nAlso, you need to restart the program.");
+            WaitForKey();
+            Environment.Exit(2);
         }
 
         return value;
