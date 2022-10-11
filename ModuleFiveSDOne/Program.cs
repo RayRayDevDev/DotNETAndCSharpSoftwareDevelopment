@@ -1,4 +1,5 @@
-﻿using static System.Console;
+﻿using System.Diagnostics;
+using static System.Console;
 
 //Created by Cole Stanley (RäDev) for CEN 4370C on 10/07/2022.
 
@@ -29,11 +30,14 @@ class Fibonacci
     {
         Write("How many results would you like outputted? ");
         int userInput = Convert.ToInt32(ReadLine());
+        long startTid = Stopwatch.GetTimestamp();
         FibonacciRecursive(0, 1, 1, userInput);
+        long pausTid = Stopwatch.GetTimestamp();
+        WriteLine($"It took {pausTid - startTid} milliseconds to calculate {userInput} results! ");
         WaitForKey();
     }
 
-    private static void FibonacciRecursive(Int64 n1, Int64 n2, Int64 n3, int userInput)
+    private static void FibonacciRecursive(long n1, long n2, long n3, int userInput)
     {
         WriteLine($"{n1}");
         if (n3 < userInput)
@@ -46,16 +50,20 @@ class Fibonacci
     {
         Write("How many results would you like outputted? ");
         int userInput = Convert.ToInt32(ReadLine());
-        Int64 n1 = 0, n2 = 1;
+        long n1 = 0, n2 = 1;
+        long startTid = Stopwatch.GetTimestamp();
         WriteLine($"{n1}");
         WriteLine($"{n2}");
         for (int i = 2; i < userInput; i++)
         {
-            Int64 n3 = n1 += n2;
+            long n3 = n1 += n2;
             WriteLine($"{n3}");
             n1 = n2;
             n2 = n3;
         }
+
+        long pausTid = Stopwatch.GetTimestamp();
+        WriteLine($"It took {pausTid - startTid} milliseconds to calculate {userInput} results! ");
     }
 
     private static void WaitForKey()
