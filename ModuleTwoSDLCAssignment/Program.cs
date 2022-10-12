@@ -1,6 +1,5 @@
 ﻿using System.Text.RegularExpressions;
 using static System.Console;
-
 //Created by Cole Stanley (RäDev) for CEN 4370C on 09/18/2022.
 //Program takes a text file, converts it into lowercase, parses each word into a list, and loops through the list, counting each unique occurrence of a particular word. The program then publishes the list to the Console. 
 
