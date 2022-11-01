@@ -2,7 +2,7 @@
 using static System.Console;
 
 // Created by Cole Stanley (RäDev)
-//This project 
+//This program presents the user with the ability to calculate the area for a Rectangle, Circle, or Square and utilizes a rudimentary menu system to achieve this. Users select the operation they want to perform by way of entering the corresponding number to their choice. The user then enters the required information to calculate the area of each shape, passing their choices into various classes and the methods within said classes. Finally, the computed value is returned to the Main class and is shown to the user on screen. The program then terminates after a user presses any key.
 
 public class WorkingMain
 {
@@ -10,12 +10,7 @@ public class WorkingMain
     {
         try
         {
-            double userLength;
-            // Fields for User inputted length, width, radius, and the final area depending on the control statement executed.
-            double userWidth;
-            double userRadius;
-            double userSideLength;
-            double finalArea;
+            double finalArea; //Since this is reused for each if condition, declare as a field instead of inside inner scope for less redundancy.
             Rectangle zeroArgRect = new Rectangle();
             // Call first 0 arg constructor for class Rectangle and initialize all values to "0." 
             Circle zeroArgCircle = new Circle();
@@ -34,11 +29,13 @@ public class WorkingMain
             var userChoice = Convert.ToInt32(Console.ReadLine());
             if (userChoice == 1)
             {
+
                 Clear();
+
                 Console.Write("Please enter the length of the rectangle: ");
-                userLength = Convert.ToDouble(Console.ReadLine());
+                double userLength = Convert.ToDouble(Console.ReadLine());
                 Console.Write("Please enter the width of the rectangle: ");
-                userWidth = Convert.ToDouble(Console.ReadLine());
+                double userWidth = Convert.ToDouble(Console.ReadLine());
                 var twoArgRect = new Rectangle(userLength, userWidth);
                 // Pass the two variables storing the user's input into the overloaded constructor.
                 finalArea = twoArgRect.computeArea();
@@ -51,7 +48,7 @@ public class WorkingMain
             {
                 Clear();
                 Console.Write("Please enter the radius of the Circle: ");
-                userRadius = Convert.ToDouble(Console.ReadLine());
+                double userRadius = Convert.ToDouble(Console.ReadLine());
                 var oneArgCircle = new Circle(userRadius);
                 // Pass the variable into the overloaded constructor.
                 finalArea = oneArgCircle.computeArea();
@@ -64,7 +61,7 @@ public class WorkingMain
             {
                 Clear();
                 Console.Write("Please enter the length of one of the square's sides: ");
-                userSideLength = Convert.ToDouble(Console.ReadLine());
+                double userSideLength = Convert.ToDouble(Console.ReadLine());
                 var oneArgSquare = new Square(userSideLength);
                 finalArea = oneArgSquare.computeArea();
                 Clear();
