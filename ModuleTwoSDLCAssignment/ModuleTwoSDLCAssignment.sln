@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleTwoSDLCAssignment", "ModuleTwoSDLCAssignment.csproj", "{2BCB9B3D-8FC7-4532-8BF1-3BB08A2C94A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTwoSDLCAssignmentTests", "..\ModuleTwoSDLCAssignmentTests\ModuleTwoSDLCAssignmentTests.csproj", "{E0F461A9-B2D0-44EE-B02E-8E2E7F083D7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2BCB9B3D-8FC7-4532-8BF1-3BB08A2C94A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BCB9B3D-8FC7-4532-8BF1-3BB08A2C94A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BCB9B3D-8FC7-4532-8BF1-3BB08A2C94A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0F461A9-B2D0-44EE-B02E-8E2E7F083D7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0F461A9-B2D0-44EE-B02E-8E2E7F083D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0F461A9-B2D0-44EE-B02E-8E2E7F083D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0F461A9-B2D0-44EE-B02E-8E2E7F083D7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

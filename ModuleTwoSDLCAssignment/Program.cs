@@ -8,12 +8,12 @@ using Application = System.Windows.Application;
 //Created by Cole Stanley (RäDev) for CEN 4370C on 09/18/2022.
 //Program takes a text file, converts it into lowercase, parses each word into a list, and loops through the list, counting each unique occurrence of a particular word. The program then publishes the list to the Console. 
 
-internal class Parser
+public class Parser
 {
     public static Application WinApp { get; private set; }
     public static Window MainWindow { get; private set; }
 
-    public static IEnumerable<string>? matches;
+    public IEnumerable<string>? matches;
     static void InitializeWindows()
     {
         WinApp = new Application();
@@ -26,12 +26,14 @@ internal class Parser
 
         //Title = "Occurrence Counter";
         //checkIfFileExists();
-        readAndParseFile();
+        Parser parser = new Parser();
+        parser.readAndParseFile();
         InitializeWindows();
     }
 
-    public static void countOccurences(List<string> regexList) //Pass the List generated in the readAndParseFile into this method.
+    public Boolean countOccurences(List<string>? regexList) //Pass the List generated in the readAndParseFile into this method.
     {
+        
         var countOccurrences = new SortedDictionary<string, int>(); //SortedDictionary due to Alphabetical sorting when values are the same.
         for (var i = 0; i < regexList.Count; i++)
             if (countOccurrences.ContainsKey(regexList[i])) //Check and see if the word is already in the dictionary. If so, add 1 to the occurrenceCount.
@@ -42,8 +44,9 @@ internal class Parser
             else //If the word is NOT already in the dictionary, add it to the dictionary and initialize its value to 1.
             {
                 countOccurrences.Add(regexList[i], 1);
+                
             }
-
+        
         /*foreach (var counts in countOccurrences.OrderByDescending(key => key.Value)) //Initialize a foreach loop that sorts the number of occurrences of any given word in descending order and prints the newly sorted dictionary to the console. 
             WriteLine($"The word \"{counts.Key}\" was used {counts.Value} time(s) in the document!");*/
         var first = matches.ElementAtOrDefault(0);
@@ -51,19 +54,18 @@ internal class Parser
         var last = matches.ElementAt(numOfMatches -= 1);
         UserControl1(first, last);
         WaitForKey();
+
+        return true;
+       
     }
 
-    private static void UserControl1(string? first, string last)
+    public static void UserControl1(string? first, string last)
     {
         ModuleTwoSDLCAssignment.UserControl1.getVar(first, last);
     }
 
-    protected static IEnumerable<string> GetMatches()
-    {
-        return matches;
-    }
 
-    protected static void readAndParseFile()
+    public void readAndParseFile()
     {
         var inputMixedCaseFile = new string(@"Text_File\The_Raven--EAP.txt");
         var outputToLowercase = new string(@"Text_File\The_Raven--EAP_Output.txt");
@@ -100,5 +102,10 @@ internal class Parser
         Write("\nPress any key to continue...");
         Read();
         //Clear();
+    }
+
+    public static object countOccurences()
+    {
+        throw new NotImplementedException();
     }
 }
