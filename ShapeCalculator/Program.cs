@@ -1,7 +1,8 @@
 ﻿using System;
 using static System.Console;
 
-// Created by Cole Stanley (R?Dev)
+// Created by Cole Stanley (RäDev)
+//This project 
 
 public class WorkingMain
 {
@@ -79,7 +80,7 @@ public class WorkingMain
         }
         catch (Exception e)
         {
-            // Catch the aforementioned exceptions.
+            // Catch all of the exceptions.
             Console.WriteLine("You did not enter a valid input. Please try again.");
             waitForKey();
         }
