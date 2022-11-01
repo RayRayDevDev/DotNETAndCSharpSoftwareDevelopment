@@ -1,9 +1,8 @@
-﻿// Include namespace system
-using System;
-using System.IO;
+﻿using System;
+using static System.Console;
 
-// Importing for userInput.
 // Created by Cole Stanley (R?Dev)
+
 public class WorkingMain
 {
     public static void Main(String[] args)
@@ -14,54 +13,83 @@ public class WorkingMain
             // Fields for User inputted length, width, radius, and the final area depending on the control statement executed.
             double userWidth;
             double userRadius;
+            double userSideLength;
             double finalArea;
             Rectangle zeroArgRect = new Rectangle();
             // Call first 0 arg constructor for class Rectangle and initialize all values to "0." 
             Circle zeroArgCircle = new Circle();
             // Call first 0 arg constructor for class Circle and initialize all values to "0."
-            Console.WriteLine($"The current length of a Rectangle stored in memory is: {zeroArgRect.getLength()}.");
+            Square zeroArgSquare = new Square();
             // Show all values are, indeed, initialized to 0 per the first constructor. 
-            Console.WriteLine($"The current width of a Rectangle stored in memory is: {zeroArgRect.getWidth()}.");
-            Console.WriteLine($"The current radius of a Circle stored in memory is: {zeroArgCircle.getRadius()}.");
+            Console.WriteLine($"The current length of a Rectangle stored in memory is: {zeroArgRect.getLength()}.\n");
+            Console.WriteLine($"The current width of a Rectangle stored in memory is: {zeroArgRect.getWidth()}.\n");
+            Console.WriteLine($"The current radius of a Circle stored in memory is: {zeroArgCircle.getRadius()}.\n");
+            Console.WriteLine($"The current length of a Square's side stored in memory is: {zeroArgSquare.getUserSideLength()}.\n\n");
+            waitForKey();
+
             var userInput = "Inputs";
-            Console.WriteLine("Please type a number to select an option:\n1. Compute the area of a Rectangle\n2. Compute the area of a Circle");
+            Console.Write("Please type a number to select an option:\n1. Compute the area of a Rectangle\n2. Compute the area of a Circle\n3. Compute the area of a Square\n\nPlease type your selection: ");
             // Menu for the user's menu choice.
-            var userChoice = Convert.ToInt64(Console.ReadLine());
+            var userChoice = Convert.ToInt32(Console.ReadLine());
             if (userChoice == 1)
             {
+                Clear();
                 Console.Write("Please enter the length of the rectangle: ");
                 userLength = Convert.ToDouble(Console.ReadLine());
-                Rectangle.setLength(userLength);
                 Console.Write("Please enter the width of the rectangle: ");
                 userWidth = Convert.ToDouble(Console.ReadLine());
-                Rectangle.setWidth(userWidth);
                 var twoArgRect = new Rectangle(userLength, userWidth);
                 // Pass the two variables storing the user's input into the overloaded constructor.
                 finalArea = twoArgRect.computeArea();
                 // Compute the area using the stored variables from the new constructor which took in the previous two arguments and store it in a variable.
+                Clear();
                 Console.WriteLine($"The area of a Rectangle with length {twoArgRect.getLength()} and width {twoArgRect.getWidth()} is: {finalArea}.");
+                waitForKey();
             }
             else if (userChoice == 2)
             {
+                Clear();
                 Console.Write("Please enter the radius of the Circle: ");
                 userRadius = Convert.ToDouble(Console.ReadLine());
-                Circle.setRadius(userRadius);
                 var oneArgCircle = new Circle(userRadius);
                 // Pass the variable into the overloaded constructor.
                 finalArea = oneArgCircle.computeArea();
                 // Compute the area using the stored variables from the new constructor which took in the previous argument and store it in a variable.
+                Clear();
                 Console.WriteLine($"The area of a Circle with radius {oneArgCircle.getRadius()} is: {finalArea}.");
+                waitForKey();
+            }
+            else if (userChoice == 3)
+            {
+                Clear();
+                Console.Write("Please enter the length of one of the square's sides: ");
+                userSideLength = Convert.ToDouble(Console.ReadLine());
+                var oneArgSquare = new Square(userSideLength);
+                finalArea = oneArgSquare.computeArea();
+                Clear();
+                WriteLine($"The area of a Square with side length {oneArgSquare.getUserSideLength()} is: {finalArea}");
+                waitForKey();
+
             }
             else
             {
                 Console.WriteLine("You did not make a valid selection. Please try again.");
+                waitForKey();
             }
         }
         catch (Exception e)
         {
             // Catch the aforementioned exceptions.
             Console.WriteLine("You did not enter a valid input. Please try again.");
+            waitForKey();
         }
+    }
+
+    private static void waitForKey()
+    {
+        Console.WriteLine("\n\nPress any key to continue...");
+        Console.ReadKey();
+        Console.Clear();
     }
 }
 public class Rectangle
@@ -80,17 +108,9 @@ public class Rectangle
         Rectangle.length = userLength;
         Rectangle.width = userWidth;
     }
-    public static void setLength(double userLength)
-    {
-        Rectangle.length = userLength;
-    }
     public double getLength()
     {
         return Rectangle.length;
-    }
-    public static void setWidth(double userWidth)
-    {
-        Rectangle.width = userWidth;
     }
     public double getWidth()
     {
@@ -115,10 +135,6 @@ public class Circle
         // Overloaded constructor per requirements. 
         Circle.radius = userRadius;
     }
-    public static void setRadius(double userRadius)
-    {
-        Circle.radius = userRadius;
-    }
     public double getRadius()
     {
         return Circle.radius;
@@ -127,5 +143,30 @@ public class Circle
     {
         // Compute the area of the circle and return the result to the calling function.
         return Math.PI * Math.Pow(Circle.radius, 2);
+    }
+}
+
+public class Square
+{
+    private static double sideLength;
+    public Square()
+    {
+        Square.sideLength = 0;
+    }
+    public Square(double userSideLength)
+    {
+        Square.sideLength = userSideLength;
+    }
+    public void setUserSideLength(double userSideLength)
+    {
+        Square.sideLength = userSideLength;
+    }
+    public double getUserSideLength()
+    {
+        return Square.sideLength;
+    }
+    public double computeArea()
+    {
+        return Math.Pow(getUserSideLength(), 2);
     }
 }
