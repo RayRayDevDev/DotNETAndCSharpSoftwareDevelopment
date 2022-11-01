@@ -2,11 +2,8 @@
 using System;
 using System.IO;
 
-
-
 // Importing for userInput.
-// Created with JDK-18.0.1.1
-// Created by Cole Stanley (R?Dev) for COP 3330C
+// Created by Cole Stanley (R?Dev)
 public class WorkingMain
 {
     public static void Main(String[] args)
