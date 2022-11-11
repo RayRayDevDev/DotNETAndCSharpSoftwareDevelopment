@@ -1,32 +1,58 @@
 ﻿using static System.Console;
 using static System.Math;
 
+//This program was created by Cole Stanley (RäDev) on 10/10/2022 and 10/11/2022.
+//This program presents the user with a console-based menu.
+//Users type in a number to make their selections and then input their 
 class MainClass
 {
     private static readonly String userMenu = $"Welcome! Please use your number pad to make a selection:\n1. Compute the area of a Rectangle\n2. Compute the area of a Square\n3. Compute the area of a Circle\n4. Exit ";
     public static void Main()
     {
-        Write(userMenu);
-        var userChoice = Convert.ToInt32(Console.ReadLine());
-        switch (userChoice)
+        var userChoice = 0;
+
+        while (userChoice != 4)
         {
-            case 1:
-                var userInputLength = Convert.ToDouble(ReadLine());
-                var userInputWidth = Convert.ToDouble(ReadLine());
-                Rectangle newRectangle = new Rectangle(userInputLength, userInputWidth);
-                WriteLine(newRectangle.area());
-                break;
-            case 2:
-                var userInputSideOfSquare = Convert.ToDouble(ReadLine());
-                Square newSquare = new Square(userInputSideOfSquare);
-                WriteLine(newSquare.area());
-                break;
-            case 3:
-                var userInputRadius = Convert.ToDouble(ReadLine());
-                Circle newCircle = new Circle(userInputRadius);
-                WriteLine(newCircle.area());
-                break;
+            Write(userMenu);
+            userChoice = Convert.ToInt32(Console.ReadLine());
+            switch (userChoice)
+            {
+                case 1:
+                    Clear();
+                    Write("Please enter the rectangle's length: ");
+                    var userInputLength = Convert.ToDouble(ReadLine());
+                    Write("Please enter the rectangle's width: ");
+                    var userInputWidth = Convert.ToDouble(ReadLine());
+                    Rectangle newRectangle = new Rectangle(userInputLength, userInputWidth);
+                    WriteLine($"\nThe area of a rectangle with a length of {userInputLength} and a width of {userInputWidth} is {newRectangle.area()}.");
+                    WaitForKey();
+                    break;
+                case 2:
+                    Clear();
+                    Write("Please enter the length of one of the square's sides: ");
+                    var userInputSideOfSquare = Convert.ToDouble(ReadLine());
+                    Square newSquare = new Square(userInputSideOfSquare);
+                    WriteLine($"\nThe area of a square with a side of length {userInputSideOfSquare} is {newSquare.area()}.");
+                    WaitForKey();
+                    break;
+                case 3:
+                    Clear();
+                    Write("Please enter the circle's radius: ");
+                    var userInputRadius = Convert.ToDouble(ReadLine());
+                    Circle newCircle = new Circle(userInputRadius);
+                    WriteLine($"\nThe area of a circle with a radius of {userInputRadius} is {newCircle.area()}.");
+                    WaitForKey();
+                    break;
+            }
         }
+        
+    }
+
+    protected static void WaitForKey()
+    {
+        WriteLine("\n\nPress any key to continue...");
+        ReadKey();
+        Clear();
     }
 }
 class Shape
@@ -45,13 +71,13 @@ class Shape
 sealed class Rectangle : Shape
 {
 
-    public Rectangle(double sideLen, double sideWit) : base(sideLength: sideLen, sideWidth: sideWit) { }
+    public Rectangle(double sideLen, double sideWit) : base(sideLength: sideLen, sideWidth: sideWit) {}
     public double area() { return sideLength * sideWidth; }
 }
 
 sealed class Square : Shape
 {
-    public Square(double sideLen) : base(sideLength: sideLen) { }
+    public Square(double sideLen) : base(sideLength: sideLen) {}
     public double area() { return Pow(sideLength, 2); }
 }
 
