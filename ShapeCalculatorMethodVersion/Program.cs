@@ -3,7 +3,10 @@ using static System.Math;
 
 //This program was created by Cole Stanley (RäDev) on 10/10/2022 and 10/11/2022.
 //This program presents the user with a console-based menu.
-//Users type in a number to make their selections and then input their 
+//Users type in the number which corresponds to the calculation they want to perform.
+//Next, the users type in the appropriate measurements and, afterwards, the answer is printed to the console.
+//The user can keep making calculations until they press the number 4, which terminates the program.
+//This program makes use of inheritance.
 class MainClass
 {
     private static readonly String userMenu = $"Welcome! Please use your number pad to make a selection:\n1. Compute the area of a Rectangle\n2. Compute the area of a Square\n3. Compute the area of a Circle\n4. Exit ";
