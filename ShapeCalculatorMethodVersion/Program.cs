@@ -11,10 +11,20 @@ class MainClass
         switch (userChoice)
         {
             case 1:
-                var userInputLength = Convert.ToInt32(Console.ReadLine());
-                var userInputWidth = Convert.ToInt32(Console.ReadLine());
-                Rectangle newRectangle = new Rectangle();
-                newRectangle.area(userInputLength, userInputWidth);
+                var userInputLength = Convert.ToDouble(ReadLine());
+                var userInputWidth = Convert.ToDouble(ReadLine());
+                Rectangle newRectangle = new Rectangle(userInputLength, userInputWidth);
+                WriteLine(newRectangle.area());
+                break;
+            case 2:
+                var userInputSideOfSquare = Convert.ToDouble(ReadLine());
+                Square newSquare = new Square(userInputSideOfSquare);
+                WriteLine(newSquare.area());
+                break;
+            case 3:
+                var userInputRadius = Convert.ToDouble(ReadLine());
+                Circle newCircle = new Circle(userInputRadius);
+                WriteLine(newCircle.area());
                 break;
         }
     }
@@ -32,18 +42,22 @@ class Shape
     }
 }
 
-internal class Rectangle : Shape //Sealed to prevent inheritance from the subclasses.
+sealed class Rectangle : Shape
 {
+
+    public Rectangle(double sideLen, double sideWit) : base(sideLength: sideLen, sideWidth: sideWit) { }
     public double area() { return sideLength * sideWidth; }
 }
 
 sealed class Square : Shape
 {
+    public Square(double sideLen) : base(sideLength: sideLen) { }
     public double area() { return Pow(sideLength, 2); }
 }
 
 sealed class Circle : Shape
 {
+    public Circle (double radius) : base(radius: radius) {}
     public double area() { return PI * Pow(radius, 2); }
 }
 
