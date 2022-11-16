@@ -26,7 +26,7 @@ class MainClass
     }
 }
 
-class iPhoneTest : IComputer
+class iPhoneTest : IComputer //Inherits from IComputer.
 {
     public void assignComputerToUser(string computerName, string computerOS, string installedApplications, String computerType)
     {
