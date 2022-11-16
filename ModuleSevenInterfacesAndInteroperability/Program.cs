@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using static System.Console;
 
+//This program was created by Cole Stanley (RäDev) on 10/15/2022 and 10/16/2022.
+//This program makes use of an interface to illustrate how different types of computers may be built from the same core.
+
 interface IComputer
 {
     void buildComputer();
@@ -19,6 +22,8 @@ class MainClass
     {
         iPhoneTest newIphone = new iPhoneTest();
         newIphone.buildComputer();
+        gamingComputer newGamingComputer = new gamingComputer();
+        newGamingComputer.buildComputer();
     }
 }
 
@@ -34,7 +39,7 @@ class iPhoneTest : IComputer
     {
         WriteLine("Building you an iPhone. Please wait...");
         Thread.Sleep(5000);
-        WriteLine("Your iPhone has been successfully built!");
+        WriteLine("\nYour iPhone has been successfully built!");
         nameComputer("iPhone 14 Pro Max");
     }
 
@@ -60,6 +65,47 @@ class iPhoneTest : IComputer
     public void returnComputerSpecifications(string computerName, string computerOS, string installedApplications, string assignedUser, String computerType)
     {
         WriteLine(
-            $"Hello {assignedUser}! Your {computerType} has been successfully built! This {computerType} includes {computerOS} with {installedApplications} preinstalled! This {computerType} has also been prenamed {computerName}.");
+            $"\nHello {assignedUser}! Your {computerType} has been successfully built! This {computerType} includes {computerOS} with {installedApplications} preinstalled! This {computerType} has also been prenamed \"{computerName}\".");
+    }
+}
+
+class gamingComputer : IComputer
+{
+    public void assignComputerToUser(string computerName, string computerOS, string installedApplications, string computerType)
+    {
+        String assignedUser = "Darren";
+        returnComputerSpecifications(computerName, computerOS, installedApplications, assignedUser, computerType);
+    }
+
+    public void buildComputer()
+    {
+        WriteLine("\nBuilding you a Gaming Computer. Please wait...");
+        Thread.Sleep(5000);
+        WriteLine("\nYour Gaming Computer has been successfully built!");
+        nameComputer("HP OMEN");
+    }
+
+    public void installApplications(string computerName, string computerOS, string computerType)
+    {
+        String installedApplications = "Brave, Visual Studio 2022, Steam, Microsoft Word, and Android Studio";
+        assignComputerToUser(computerName, computerOS, installedApplications, computerType);
+    }
+
+    public void installComputerOperatingSystem(string computerName, string computerType)
+    {
+        String oSVersion = "Windows 11, Version 22H2";
+        installApplications(computerName, oSVersion, computerType);
+    }
+
+    public void nameComputer(string computerType)
+    {
+        String computerName = "Darren's HP OMEN";
+        installComputerOperatingSystem(computerName, computerType);
+    }
+
+    public void returnComputerSpecifications(string computerName, string computerOS, string installedApplications, string assignedUser, string computerType)
+    {
+        WriteLine(
+            $"\nHello {assignedUser}! Your {computerType} has been successfully built! This {computerType} includes {computerOS} with {installedApplications} preinstalled! This {computerType} has also been prenamed \"{computerName}\".");
     }
 }
