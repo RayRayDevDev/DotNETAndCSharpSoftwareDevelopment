@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using static System.Console;
+﻿using static System.Console;
 
 //This program was created by Cole Stanley (RäDev) on 10/15/2022 and 10/16/2022.
 //This program makes use of an interface to illustrate how different types of computers may be built from the same core.
