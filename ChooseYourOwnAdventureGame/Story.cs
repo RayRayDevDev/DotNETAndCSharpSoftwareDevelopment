@@ -27,9 +27,14 @@ public class Story
             if (userSelection == 1)
             {
                 Clear();
-                WriteLine("Your adviser is now concerned for his own safety and, seeing that you're not," +
+                WriteLine("Your adviser, now concerned primarily for his own safety and, seeing that you're not," +
                           " simply responds with: \'Ok\'\n");
-                WriteLine("He runs out, being immediately met with a crowd of soldiers approaching your bedchamber.\n\n");
+                WriteLine("He runs out, being immediately met with a crowd of soldiers approaching your bedchamber.\n\n\n\n" +
+                          "He is killed due to your selfishness.\n\n\n\n" +
+                          "Not to worry, though, you're next.\n\n" +
+                          "The soldiers find you in your bed and kill you as well.\n\n\n\n" +
+                          "Maybe you should've listened to your adviser.");
+                MainClass.WaitForKey();
             }
             else if (userSelection == 2)
             {
@@ -64,7 +69,7 @@ public class Story
         {
             try
             {
-                WriteLine("Please enter the number that corresponds to your desired selection:\n" +
+                WriteLine($"Welcome, {userName}!\nPlease enter the number that corresponds to your desired selection:\n" +
                       "1. New Game\n" +
                       "2. Load Game\n" +
                       "3. Exit");
