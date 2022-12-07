@@ -3,7 +3,7 @@ using static System.Console;
 
 public class Story
 {
-    public void MainStory(string userName)
+    public void MainStory(string userName = null)
     {
         ArrayList completeStory = new ArrayList();
         Clear();
@@ -62,7 +62,15 @@ public class Story
 
                 if (userSelection == 1)
                 {
-
+                    var choiceOne = "You push past your Adviser and open the door.\n\n" +
+                                    "You're quickly confronted by the invading army just outisde your door.\n\n\n\n" +
+                                    "'Well, that was easy' the soldier leading the pack stated, while taking out his sword.\n\n\n\n" +
+                                    "You're killed on the spot.\n\n" +
+                                    "By now, your adviser has escaped using the escape hatch and gets away.\n\n\n\n" +
+                                    "Maybe you should've listened to your adviser.";
+                    completeStory.Add(choiceOne);
+                    SaveStoryToFile save = new SaveStoryToFile();
+                    save.saveStoryToFile(completeStory);
                 }
                 else if (userSelection == 2)
                 {
@@ -99,14 +107,13 @@ public class Story
         var userName = ReadLine().Trim();
         Clear();
         int userChoice = 0;
-        while (userChoice != 3)
+        while (userChoice != 2)
         {
             try
             {
                 WriteLine($"Welcome, {userName}!\nPlease enter the number that corresponds to your desired selection:\n" +
                       "1. New Game\n" +
-                      "2. Load Game\n" +
-                      "3. Exit");
+                      "2. Exit");
                 Write("Please make your selection: ");
                 userChoice = Convert.ToInt32(ReadLine());
 
@@ -124,10 +131,6 @@ public class Story
                     MainStory(userName);
                     break;
                 case 2:
-                    SaveStoryToFile save = new SaveStoryToFile();
-                    save.saveStoryToFile();
-                    break;
-                case 3:
                     Clear();
                     WriteLine("Thanks for loading the game!\n\nGoodbye!");
                     MainClass.WaitForKey();
