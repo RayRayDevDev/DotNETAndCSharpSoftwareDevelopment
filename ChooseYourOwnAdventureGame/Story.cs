@@ -1,9 +1,11 @@
-﻿using static System.Console;
+﻿using System.Collections;
+using static System.Console;
 
 public class Story
 {
     public void MainStory(string userName)
     {
+        ArrayList completeStory = new ArrayList();
         Clear();
         WriteLine("You're the prince of a country in crisis, Rableonia.\n" +
                   "You're awakened by one of your advisers suddenly.\n" +
@@ -16,46 +18,78 @@ public class Story
         if (userSelection == 1) //Angry and annoyed timeline.
         {
             Clear();
-            WriteLine($"You tell him to go away.\n\n" +
-                      "He looks very confused by your outburst, but nevertheless persists:\n\n" +
-                      $"\'But {userName}, they're trying to storm the castle!\' he protests.\n\n" +
-                      "What will you do?\n");
+            var initialPrompt = $"You tell him to go away.\n\n" +
+                                "He looks very confused by your outburst, but nevertheless persists:\n\n" +
+                                $"\'But {userName}, they're trying to storm the castle!\' he protests.\n\n" +
+                                "What will you do?\n";
+            WriteLine(initialPrompt);
+            completeStory.Add(initialPrompt);
             Write("1. \'Leave me alone to die then!\'\n\n" +
                   "2. \'Wait...WHAT?!\' ");
-             userSelection = Convert.ToInt32(ReadLine());
+            userSelection = Convert.ToInt32(ReadLine());
 
             if (userSelection == 1)
             {
                 Clear();
-                WriteLine("Your adviser, now concerned primarily for his own safety and, seeing that you're not," +
-                          " simply responds with: \'Ok\'\n");
-                WriteLine("He runs out, being immediately met with a crowd of soldiers approaching your bedchamber.\n\n\n\n" +
-                          "He is killed due to your selfishness.\n\n\n\n" +
-                          "Not to worry, though, you're next.\n\n" +
-                          "The soldiers find you in your bed and kill you as well.\n\n\n\n" +
-                          "Maybe you should've listened to your adviser.");
+                var choiceOneOne =
+                    "Your adviser, now concerned primarily for his own safety and, seeing that you're not," +
+                    " simply responds with: \'Ok\'\n";
+                var choiceOneTwo =
+                    "He runs out, being immediately met with a crowd of soldiers approaching your bedchamber.\n\n\n\n" +
+                    "He is killed due to your selfishness.\n\n\n\n" +
+                    "Not to worry, though, you're next.\n\n" +
+                    "The soldiers find you in your bed and kill you as well.\n\n\n\n" +
+                    "Maybe you should've listened to your adviser.";
+                WriteLine(choiceOneOne + choiceOneTwo);
+                completeStory.Add(choiceOneOne + choiceOneTwo);
                 MainClass.WaitForKey();
             }
             else if (userSelection == 2)
             {
-                
+                Clear();
+                var choiceTwo = "You are all of a sudden awake and alert--How did this happen?\n\n" +
+                                "\'What?! Why?\' you ask\n\n" +
+                                "Your adviser looks at you sullenly:\n\n" +
+                                "\'It's Iolo...he's trying to become king...at any cost...\n\n" +
+                                "You immediately get out of bed and begin heading towards the door.\n\n" +
+                                "Your adviser stops you suddenly.\n\n" +
+                                "What will you do?\n\n\n\n";
+                completeStory.Add(choiceTwo);
+                WriteLine(choiceTwo);
+                Write("1. 'Stand Aside!'\n" +
+                      "2. 'What's wrong?' ");
+                userSelection = Convert.ToInt32(ReadLine());
+
+                if (userSelection == 1)
+                {
+
+                }
+                else if (userSelection == 2)
+                {
+
+                }
+                else
+                {
+
+                }
+
 
             }
             else
             {
-                
+
             }
             {
-                
+
             }
         }
-        else if (userSelection == 2)
+        else if (userSelection == 2) //Concerned timeline
         {
-            
+
         }
         else
         {
-            
+
         }
     }
 
@@ -90,8 +124,8 @@ public class Story
                     MainStory(userName);
                     break;
                 case 2:
-                    SaveAndLoadGame save = new SaveAndLoadGame();
-                    save.loadGame();
+                    SaveStoryToFile save = new SaveStoryToFile();
+                    save.saveStoryToFile();
                     break;
                 case 3:
                     Clear();
