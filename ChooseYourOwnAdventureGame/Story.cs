@@ -3,28 +3,27 @@ using static System.Console;
 
 public class Story
 {
-    public void MainStory(string userName = null)
+    public void MainStory(string? userName = null)
     {
         ArrayList completeStory = new ArrayList();
         Clear();
         WriteLine("You're the prince of a country in crisis, Rableonia.\n" +
                   "You're awakened by one of your advisers suddenly.\n" +
                   "He seems concerned, but you're tired.\n\n" +
-                  "What will you do?");
-        Write("1. Tell him to go away\n" +
-              "2. Ask him what's wrong ");
+                  "What will you do?\n");
+        Write("1. Tell him to go away ");
         int userSelection = Convert.ToInt32(ReadLine());
 
-        if (userSelection == 1) //Angry and annoyed timeline.
+        if (userSelection == 1)
         {
             Clear();
             var initialPrompt = $"You tell him to go away.\n\n" +
                                 "He looks very confused by your outburst, but nevertheless persists:\n\n" +
-                                $"\'But {userName}, they're trying to storm the castle!\' he protests.\n\n" +
-                                "What will you do?\n";
+                                $"\'But {userName}, they're trying to storm the castle!\' he protests.\n\n";
             WriteLine(initialPrompt);
+            WriteLine("What will you do?\n");
             completeStory.Add(initialPrompt);
-            Write("1. \'Leave me alone to die then!\'\n\n" +
+            Write("1. \'Leave me alone to die then!\'\n" +
                   "2. \'Wait...WHAT?!\' ");
             userSelection = Convert.ToInt32(ReadLine());
 
@@ -42,6 +41,8 @@ public class Story
                     "Maybe you should've listened to your adviser.";
                 WriteLine(choiceOneOne + choiceOneTwo);
                 completeStory.Add(choiceOneOne + choiceOneTwo);
+                SaveStoryToFile save = new SaveStoryToFile();
+                save.saveStoryToFile(completeStory);
                 MainClass.WaitForKey();
             }
             else if (userSelection == 2)
@@ -62,42 +63,58 @@ public class Story
 
                 if (userSelection == 1)
                 {
+                    Clear();
                     var choiceOne = "You push past your Adviser and open the door.\n\n" +
                                     "You're quickly confronted by the invading army just outisde your door.\n\n\n\n" +
                                     "'Well, that was easy' the soldier leading the pack stated, while taking out his sword.\n\n\n\n" +
                                     "You're killed on the spot.\n\n" +
-                                    "By now, your adviser has escaped using the escape hatch and gets away.\n\n\n\n" +
+                                    "By now, your adviser has escaped using a secret door in the corner of your room and successfully escapes!\n\n\n\n" +
                                     "Maybe you should've listened to your adviser.";
                     completeStory.Add(choiceOne);
+                    WriteLine(choiceOne);
                     SaveStoryToFile save = new SaveStoryToFile();
                     save.saveStoryToFile(completeStory);
+                    MainClass.WaitForKey();
                 }
                 else if (userSelection == 2)
                 {
+                    Clear();
+                    var choiceOne = "You are taken aback. Your adviser has never gotten in your way before.\n\n" +
+                                    "'Don't go that way!' he tells you. 'The army is outside and will kill you on sight!\n\n" +
+                                    "He sounds frightened, so you listen to him.\n\n\n\n" +
+                                    "'This way!' he motions to you, revealing a secret door in the corner.\n\n" +
+                                    "Flabbergasted, you run into the corner and through the door, which you soon realize leads into an underground bunker.\n\n\n\n" +
+                                    "You're saved.\n\n\n\n" +
+                                    "Aren't you glad you listened to your adviser?";
+                    completeStory.Add(choiceOne);
+                    WriteLine(choiceOne);
+                    SaveStoryToFile save = new SaveStoryToFile();
+                    save.saveStoryToFile(completeStory);
+                    MainClass.WaitForKey();
 
                 }
                 else
                 {
-
+                    Clear();
+                    WriteLine("Uh oh! You didn't make a valid selection! Please try again!");
+                    MainClass.WaitForKey();
                 }
 
 
             }
             else
             {
+                Clear();
+                WriteLine("Uh oh! You didn't make a valid selection! Please try again!");
+                MainClass.WaitForKey();
 
             }
-            {
-
-            }
-        }
-        else if (userSelection == 2) //Concerned timeline
-        {
-
         }
         else
         {
-
+            Clear();
+            WriteLine("Uh oh! You didn't make a valid selection! Please try again!");
+            MainClass.WaitForKey();
         }
     }
 
@@ -113,7 +130,7 @@ public class Story
             {
                 WriteLine($"Welcome, {userName}!\nPlease enter the number that corresponds to your desired selection:\n" +
                       "1. New Game\n" +
-                      "2. Exit");
+                      "2. Exit\n");
                 Write("Please make your selection: ");
                 userChoice = Convert.ToInt32(ReadLine());
 
@@ -132,11 +149,13 @@ public class Story
                     break;
                 case 2:
                     Clear();
-                    WriteLine("Thanks for loading the game!\n\nGoodbye!");
+                    WriteLine("Thanks for playing!\n\nGoodbye!");
                     MainClass.WaitForKey();
                     break;
                 default:
+                    Clear();
                     Console.WriteLine("Uh oh! That's not a valid selection! Please try again!");
+                    MainClass.WaitForKey();
                     continue;
             }
         }
