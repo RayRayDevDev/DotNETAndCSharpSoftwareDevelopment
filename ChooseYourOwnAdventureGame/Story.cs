@@ -7,11 +7,12 @@ public class Story
     {
         ArrayList completeStory = new ArrayList();
         Clear();
-        WriteLine("You're the prince of a country in crisis, Rableonia.\n" +
-                  "You're awakened by one of your advisers suddenly.\n" +
-                  "He seems concerned, but you're tired.\n\n" +
-                  "What will you do?\n");
-        Write("1. Tell him to go away ");
+        var background = "You're the prince of a country in crisis, Rableonia.\n" +
+                        "You're awakened by one of your advisers suddenly.\n" +
+                        "He seems concerned, but you're tired.\n\n";
+        WriteLine(background);
+        completeStory.Add(background);
+        Write("What will you do?\n\n1. Tell him to go away ");
         int userSelection = Convert.ToInt32(ReadLine());
 
         if (userSelection == 1)
@@ -21,7 +22,7 @@ public class Story
                                 "He looks very confused by your outburst, but nevertheless persists:\n\n" +
                                 $"\'But {userName}, they're trying to storm the castle!\' he protests.\n\n";
             WriteLine(initialPrompt);
-            WriteLine("What will you do?\n");
+            WriteLine("What will you do?\n\n");
             completeStory.Add(initialPrompt);
             Write("1. \'Leave me alone to die then!\'\n" +
                   "2. \'Wait...WHAT?!\' ");
@@ -54,7 +55,7 @@ public class Story
                                 "\'It's Iolo...he's trying to become king...at any cost...\n\n" +
                                 "You immediately get out of bed and begin heading towards the door.\n\n" +
                                 "Your adviser stops you suddenly.\n\n" +
-                                "What will you do?\n\n\n\n";
+                                "What will you do?\n\n";
                 completeStory.Add(choiceTwo);
                 WriteLine(choiceTwo);
                 Write("1. 'Stand Aside!'\n" +
