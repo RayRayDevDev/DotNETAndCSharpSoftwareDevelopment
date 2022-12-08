@@ -12,7 +12,8 @@ public class Story
                         "He seems concerned, but you're tired.\n\n";
         WriteLine(background);
         completeStory.Add(background);
-        Write("What will you do?\n\n1. Tell him to go away ");
+        Write("What will you do?\n\n" +
+              "1. Tell him to go away ");
         int userSelection = Convert.ToInt32(ReadLine());
 
         if (userSelection == 1)
